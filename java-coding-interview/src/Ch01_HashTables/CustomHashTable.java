@@ -3,16 +3,22 @@ package Ch01_HashTables;
 import java.util.LinkedList;
 
 public class CustomHashTable {
-    private final static int TABLE_DEFAULT_SIZE = 16;
     private LinkedList<CustomHashEntry>[] table;
+    private int tableSize = 6;
+    private int entriesCount = 0;
 
     CustomHashTable() {
-        table = new LinkedList[TABLE_DEFAULT_SIZE];
+        table = new LinkedList[tableSize];
     }
 
     public void put(String key, int value) {
         if (key == null) {
             throw new IllegalArgumentException("Key can't be null!");
+        }
+
+        if (shouldResize()) {
+            resize();
+            put(key, value);
         }
 
         int index = findIndex(key);
@@ -24,9 +30,11 @@ public class CustomHashTable {
             return;
         }
 
-        // As the HashTable index can be shared across different keys, it's necessary to check entry keys
+        // As the HashTable index can be shared across different keys
+        // it's necessary to check entry keys
         for (CustomHashEntry item : entry) {
             if (item.getKey().equals(key)) {
+                // Update existing key with the new value
                 entry.remove(item);
                 entry.add(new CustomHashEntry(key, value));
 
@@ -35,26 +43,9 @@ public class CustomHashTable {
         }
 
         // the entry under index exists but doesn't contain this key yet
-        doPut(key, value, index);
-    }
-
-    private void doPut(String key, int value, int index) {
-        LinkedList<CustomHashEntry> entry = new LinkedList<>();
-        CustomHashEntry newItem = new CustomHashEntry(key, value);
-
-        entry.add(newItem);
-
-        table[index] = entry;
-    }
-
-    private int findIndex(String key) {
-        return calculateHashCode(key) % TABLE_DEFAULT_SIZE;
-    }
-
-    private int calculateHashCode(String key) {
-        int mod = key.hashCode() % TABLE_DEFAULT_SIZE;
-
-        return mod < 0 ? mod + TABLE_DEFAULT_SIZE : mod;
+        // append it
+        entry.add(new CustomHashEntry(key, value));
+        increaseTableSize();
     }
 
     public Integer get(String key) {
@@ -71,5 +62,59 @@ public class CustomHashTable {
         }
 
         return null;
+    }
+
+    public int size() {
+        return entriesCount;
+    }
+
+    private void doPut(String key, int value, int index) {
+        LinkedList<CustomHashEntry> entry = new LinkedList<>();
+        CustomHashEntry newItem = new CustomHashEntry(key, value);
+
+        entry.add(newItem);
+
+        table[index] = entry;
+        increaseTableSize();
+    }
+
+    private void increaseTableSize() {
+        entriesCount++;
+    }
+
+    private int findIndex(String key) {
+        return calculateHashCode(key) % tableSize;
+    }
+
+    private int calculateHashCode(String key) {
+        int mod = key.hashCode() % tableSize;
+
+        return mod < 0 ? mod + tableSize : mod;
+    }
+
+    /**
+     * Keeps the load factor below 50%.
+     *
+     * @return boolean
+     */
+    private boolean shouldResize() {
+        return tableSize != 0 && entriesCount >= tableSize / 2;
+    }
+
+    private void resize() {
+        LinkedList<CustomHashEntry>[] tableCopy = table;
+        tableSize = tableSize * 2;
+        table = new LinkedList[tableSize];
+        entriesCount = 0;
+
+        for (LinkedList<CustomHashEntry> entries : tableCopy) {
+            if (entries == null) {
+                continue;
+            }
+
+            for (CustomHashEntry entry : entries) {
+                put(entry.getKey(), entry.getValue());
+            }
+        }
     }
 }
