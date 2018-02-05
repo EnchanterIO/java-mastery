@@ -43,7 +43,7 @@ public class CustomHashTable {
         }
 
         // the entry under index exists but doesn't contain this key yet
-        // append it
+        // add it
         entry.add(new CustomHashEntry(key, value));
         increaseTableSize();
     }
