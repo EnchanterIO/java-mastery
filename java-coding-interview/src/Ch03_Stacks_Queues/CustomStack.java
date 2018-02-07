@@ -36,7 +36,7 @@ public class CustomStack<T> {
     }
 
     public static void main(String[] args) {
-        CustomStack<Integer> stack = new CustomStack<Integer>();
+        CustomStack<Integer> stack = new CustomStack<>();
         stack.push(10);
         stack.push(20);
         stack.push(30);
