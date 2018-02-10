@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar build/libs/inner-circle-0.0.0-SNAPSHOT.jar
