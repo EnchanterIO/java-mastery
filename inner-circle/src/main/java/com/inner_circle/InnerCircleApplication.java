@@ -15,14 +15,12 @@ public class InnerCircleApplication {
 
 	@RequestMapping("/")
 	@ResponseBody
-	String home() throws InterruptedException {
+	String home() {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat calendarFormat = new SimpleDateFormat("HH:mm:ss");
 
 		System.out.printf("Request received at: %s.\n", calendarFormat.format(calendar.getTime()));
 		System.out.printf("Thread name: %s.\n", Thread.currentThread().getName());
-
-		Thread.sleep(10000);
 
 		return "A heroic path from PHP to Java!";
 	}
