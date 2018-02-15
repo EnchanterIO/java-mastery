@@ -4,7 +4,7 @@ import com.mars_rover.Coordinates.Coordinate;
 import com.mars_rover.Robot.Mobility.Map;
 import com.mars_rover.Robot.Mobility.MobilityEngine;
 import com.mars_rover.Robot.Mobility.Orientation;
-import com.mars_rover.Robot.Mobility.OutOfMapException;
+import com.mars_rover.Robot.Mobility.MoveOutOfMapRefusedException;
 
 /**
  * @author Lukas Lukac <services@trki.sk>
@@ -17,7 +17,7 @@ public class Robot {
         mobilityEngine = new MobilityEngine(map, coordinate, orientation);
     }
 
-    public Coordinate moveForward() throws OutOfMapException {
+    public Coordinate moveForward() throws MoveOutOfMapRefusedException {
         return mobilityEngine.moveForward();
     }
 

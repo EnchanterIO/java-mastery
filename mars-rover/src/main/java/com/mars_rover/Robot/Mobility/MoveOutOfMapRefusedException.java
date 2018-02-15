@@ -6,11 +6,11 @@ import com.mars_rover.Coordinates.Coordinate;
  * @author Lukas Lukac <services@trki.sk>
  * @since 2018-02-15
  */
-public class OutOfMapException extends RuntimeException {
-    public OutOfMapException(Coordinate coordinate) {
+public class MoveOutOfMapRefusedException extends RuntimeException {
+    public MoveOutOfMapRefusedException(Coordinate coordinate) {
         super(
             String.format(
-                "Robot got lost by entering unmapped coordinate %d,%d!",
+                "Calculated coordinate %d,%d is not on the map! Robot won't move.",
                 coordinate.horizontalPoint(),
                 coordinate.verticalPoint()
             )

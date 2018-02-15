@@ -23,7 +23,7 @@ public class MobilityEngine {
         this.orientation = orientation;
     }
 
-    public Coordinate moveForward() throws OutOfMapException {
+    public Coordinate moveForward() throws MoveOutOfMapRefusedException {
         int horizontalPoint = currentCoordinate.horizontalPoint();
         int verticalPoint = currentCoordinate.verticalPoint();
 
@@ -53,7 +53,7 @@ public class MobilityEngine {
             return currentCoordinate;
         }
 
-        throw new OutOfMapException(newCoordinate);
+        throw new MoveOutOfMapRefusedException(newCoordinate);
     }
 
     public void rotateLeft() {
