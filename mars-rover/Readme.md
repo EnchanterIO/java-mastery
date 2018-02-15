@@ -14,9 +14,9 @@ heroku local
 
 # How to deploy to Heroku
 
-heroku jar:deploy build/libs/inner-circle-0.0.0-SNAPSHOT.jar --app ll-inner-circle
+heroku jar:deploy build/libs/mars-rover-0.1.0-SNAPSHOT.jar --app ll-mars-rover
 
-Deploys the JAR file to a Heroku app called: "ll-inner-circle".
+Deploys the JAR file to a Heroku app called: "ll-mars-rover".
 
 # How to configure the app:
 
