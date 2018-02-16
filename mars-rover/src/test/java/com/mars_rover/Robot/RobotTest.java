@@ -6,12 +6,15 @@ import com.mars_rover.Robot.Mobility.Orientation;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 /**
  * No need to mock the dependencies of the Robot as in this case
  * no infrastructure is involved and we can test everything by passing
  * real dependencies which will automatically test these as well.
+ *
+ * @author Lukas Lukac <services@trki.sk>
+ * @since  2018-02-13
  */
 public class RobotTest {
     private final int horizontalPoint = 1;
@@ -33,13 +36,16 @@ public class RobotTest {
     public void movingNorthShouldChangeVerticalCoordinate() {
         robot.moveForward();
 
-        assertTrue(
+        assertEquals(
             "Robot vertical coordinate should have been increased.",
-            robot.currentCoordinate().verticalPoint() == verticalPoint + 1
+            robot.currentCoordinate().verticalPoint(),
+            verticalPoint + 1
         );
-        assertTrue(
+
+        assertEquals(
             "Robot horizontal coordinate should not be changed.",
-            robot.currentCoordinate().horizontalPoint() == horizontalPoint
+            robot.currentCoordinate().horizontalPoint(),
+            horizontalPoint
         );
     }
 
@@ -48,13 +54,16 @@ public class RobotTest {
         robot.rotateRight();
         robot.moveForward();
 
-        assertTrue(
+        assertEquals(
             "Robot horizontal coordinate should have been increased.",
-            robot.currentCoordinate().horizontalPoint() == horizontalPoint + 1
+            robot.currentCoordinate().horizontalPoint(),
+            horizontalPoint + 1
         );
-        assertTrue(
+
+        assertEquals(
             "Robot vertical coordinate should not be changed.",
-            robot.currentCoordinate().verticalPoint() == verticalPoint
+            robot.currentCoordinate().verticalPoint(),
+            verticalPoint
         );
     }
 
@@ -63,13 +72,16 @@ public class RobotTest {
         robot.rotateLeft();
         robot.moveForward();
 
-        assertTrue(
+        assertEquals(
             "Robot horizontal coordinate should have been increased.",
-            robot.currentCoordinate().horizontalPoint() == horizontalPoint - 1
+            robot.currentCoordinate().horizontalPoint(),
+            horizontalPoint - 1
         );
-        assertTrue(
+
+        assertEquals(
             "Robot vertical coordinate should not be changed.",
-            robot.currentCoordinate().verticalPoint() == verticalPoint
+            robot.currentCoordinate().verticalPoint(),
+            verticalPoint
         );
     }
 
@@ -79,13 +91,16 @@ public class RobotTest {
         robot.rotateLeft();
         robot.moveForward();
 
-        assertTrue(
+        assertEquals(
             "Robot vertical coordinate should have been decreased.",
-            robot.currentCoordinate().verticalPoint() == verticalPoint - 1
+            robot.currentCoordinate().verticalPoint(),
+            verticalPoint - 1
         );
-        assertTrue(
+
+        assertEquals(
             "Robot horizontal coordinate should not be changed.",
-            robot.currentCoordinate().horizontalPoint() == horizontalPoint
+            robot.currentCoordinate().horizontalPoint(),
+            horizontalPoint
         );
     }
 }
