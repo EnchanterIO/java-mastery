@@ -17,8 +17,8 @@ public class Robot {
         mobilityEngine = new MobilityEngine(map, coordinate, orientation);
     }
 
-    public Coordinate moveForward() throws MoveOutOfMapRefusedException {
-        return mobilityEngine.moveForward();
+    public void moveForward() throws MoveOutOfMapRefusedException {
+        mobilityEngine.moveForward();
     }
 
     public void rotateLeft() {
@@ -31,5 +31,9 @@ public class Robot {
 
     public Orientation currentOrientation() {
         return mobilityEngine.currentOrientation();
+    }
+
+    public Coordinate currentCoordinate() {
+        return mobilityEngine.currentCoordinate();
     }
 }
