@@ -1,6 +1,6 @@
-package com.mars_rover.Planet;
+package com.marsrover.planet;
 
-import com.mars_rover.Robot.Mobility.Map;
+import com.marsrover.robot.Mobility.SurfacePlan;
 
 /**
  * @author Lukas Lukac <services@trki.sk>
@@ -13,7 +13,7 @@ public class Planet {
         this.surface = new Surface(width, height);
     }
 
-    public Map map() {
+    public SurfacePlan map() {
         return this.surface;
     }
 }

@@ -1,4 +1,4 @@
-package com.mars_rover.RobotInstructionsController;
+package com.marsrover.controller;
 
 /**
  * @author Lukas Lukac <services@trki.sk>

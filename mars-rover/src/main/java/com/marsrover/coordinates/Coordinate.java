@@ -1,8 +1,8 @@
-package com.mars_rover.Coordinates;
+package com.marsrover.coordinates;
 
 /**
  * Coordinate is responsible for uniquely identifying a specific Point
- * on a Planet.
+ * on a planet.
  *
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-13

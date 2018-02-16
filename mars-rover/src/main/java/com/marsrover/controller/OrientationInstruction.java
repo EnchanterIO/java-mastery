@@ -1,6 +1,6 @@
-package com.mars_rover.RobotInstructionsController;
+package com.marsrover.controller;
 
-import com.mars_rover.Robot.Mobility.Orientation;
+import com.marsrover.robot.Mobility.Orientation;
 
 enum OrientationInstruction {
     N(Orientation.NORTH),

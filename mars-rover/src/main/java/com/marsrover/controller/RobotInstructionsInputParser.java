@@ -1,10 +1,11 @@
-package com.mars_rover.RobotInstructionsController;
+package com.marsrover.controller;
 
-import com.mars_rover.Coordinates.Coordinate;
-import com.mars_rover.Planet.Planet;
-import com.mars_rover.Robot.Mobility.Orientation;
+import com.marsrover.coordinates.Coordinate;
+import com.marsrover.planet.Planet;
+import com.marsrover.robot.Mobility.Orientation;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,7 +25,7 @@ public class RobotInstructionsInputParser {
         }
     }
 
-    public static ArrayList<RobotInstructions> parseInstructions(String instructions) throws IllegalArgumentException {
+    public static List<RobotInstructions> parseInstructions(String instructions) throws IllegalArgumentException {
         Planet planet = parsePlanet(instructions);
         String instructionsWithoutPlanet = removePlanet(instructions);
         Matcher matcher = createParser(instructionsWithoutPlanet);

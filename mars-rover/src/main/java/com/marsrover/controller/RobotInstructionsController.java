@@ -1,7 +1,7 @@
-package com.mars_rover.RobotInstructionsController;
+package com.marsrover.controller;
 
-import com.mars_rover.Robot.Mobility.MoveOutOfMapRefusedException;
-import com.mars_rover.Robot.Robot;
+import com.marsrover.robot.Mobility.MoveOutOfSurfacePlanRefusedException;
+import com.marsrover.robot.Robot;
 
 /**
  * @author Lukas Lukac <services@trki.sk>
@@ -29,7 +29,7 @@ public class RobotInstructionsController {
                         break;
                 }
             }
-        } catch (MoveOutOfMapRefusedException exception) {
+        } catch (MoveOutOfSurfacePlanRefusedException exception) {
             RobotState robotState = new RobotState(robot.currentCoordinate(), robot.currentOrientation());
             robotState.addError(exception.getMessage());
 

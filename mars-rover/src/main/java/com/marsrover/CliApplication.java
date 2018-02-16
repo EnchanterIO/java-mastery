@@ -1,4 +1,4 @@
-package com.mars_rover;
+package com.marsrover;
 
 /**
  * @author Lukas Lukac <services@trki.sk>

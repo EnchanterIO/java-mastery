@@ -1,11 +1,12 @@
-package com.mars_rover;
+package com.marsrover;
 
-import com.mars_rover.RobotInstructionsController.RobotInstructions;
-import com.mars_rover.RobotInstructionsController.RobotInstructionsController;
-import com.mars_rover.RobotInstructionsController.RobotInstructionsInputParser;
-import com.mars_rover.RobotInstructionsController.RobotState;
+import com.marsrover.controller.RobotInstructions;
+import com.marsrover.controller.RobotInstructionsController;
+import com.marsrover.controller.RobotInstructionsInputParser;
+import com.marsrover.controller.RobotState;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Lukas Lukac <services@trki.sk>
@@ -13,8 +14,8 @@ import java.util.ArrayList;
  */
 public class Application {
     public static String runApplication(String input) {
-        ArrayList<String> robotsOutputs = new ArrayList<>();
-        ArrayList<RobotInstructions> robotsInstructions = new ArrayList<>();
+        List<String> robotsOutputs = new ArrayList<>();
+        List<RobotInstructions> robotsInstructions = new ArrayList<>();
 
         try {
             robotsInstructions = RobotInstructionsInputParser.parseInstructions(input);

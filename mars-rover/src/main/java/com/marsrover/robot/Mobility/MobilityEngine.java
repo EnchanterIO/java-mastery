@@ -1,29 +1,29 @@
-package com.mars_rover.Robot.Mobility;
+package com.marsrover.robot.Mobility;
 
-import com.mars_rover.Coordinates.Coordinate;
+import com.marsrover.coordinates.Coordinate;
 
 /**
- * Responsible for handling Robot movements such a rotation and its position.
+ * Responsible for handling robot movements such a rotation and its position.
  *
- * The Robot is booted up with externally given Map and Coordinates.
- * In the future, the Map could be updated on the fly as some more sophisticated
- * Robot vision could be introduced that would identify the surroundings.
+ * The robot is booted up with externally given SurfacePlan and coordinates.
+ * In the future, the SurfacePlan could be updated on the fly as some more sophisticated
+ * robot vision could be introduced that would identify the surroundings.
  *
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-14
  */
 public class MobilityEngine {
-    private final Map map;
+    private final SurfacePlan surfacePlan;
     private Coordinate currentCoordinate;
     private Orientation orientation;
 
-    public MobilityEngine(Map map, Coordinate coordinate, Orientation orientation) {
-        this.map = map;
+    public MobilityEngine(SurfacePlan surfacePlan, Coordinate coordinate, Orientation orientation) {
+        this.surfacePlan = surfacePlan;
         this.currentCoordinate = coordinate;
         this.orientation = orientation;
     }
 
-    public void moveForward() throws MoveOutOfMapRefusedException {
+    public void moveForward() throws MoveOutOfSurfacePlanRefusedException {
         int horizontalPoint = currentCoordinate.horizontalPoint();
         int verticalPoint = currentCoordinate.verticalPoint();
 
@@ -47,13 +47,13 @@ public class MobilityEngine {
 
         Coordinate newCoordinate = new Coordinate(horizontalPoint, verticalPoint);
 
-        if (map.hasCoordinate(newCoordinate)) {
+        if (surfacePlan.hasCoordinate(newCoordinate)) {
             currentCoordinate = newCoordinate;
 
             return;
         }
 
-        throw new MoveOutOfMapRefusedException(newCoordinate);
+        throw new MoveOutOfSurfacePlanRefusedException(newCoordinate);
     }
 
     public void rotateLeft() {

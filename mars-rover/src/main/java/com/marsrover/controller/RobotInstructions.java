@@ -1,8 +1,8 @@
-package com.mars_rover.RobotInstructionsController;
+package com.marsrover.controller;
 
-import com.mars_rover.Coordinates.Coordinate;
-import com.mars_rover.Planet.Planet;
-import com.mars_rover.Robot.Mobility.Orientation;
+import com.marsrover.coordinates.Coordinate;
+import com.marsrover.planet.Planet;
+import com.marsrover.robot.Mobility.Orientation;
 
 /**
  * @author Lukas Lukac <services@trki.sk>

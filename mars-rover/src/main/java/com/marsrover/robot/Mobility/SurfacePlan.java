@@ -1,11 +1,11 @@
-package com.mars_rover.Robot.Mobility;
+package com.marsrover.robot.Mobility;
 
-import com.mars_rover.Coordinates.Coordinate;
+import com.marsrover.coordinates.Coordinate;
 
 /**
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-15
  */
-public interface Map {
+public interface SurfacePlan {
     boolean hasCoordinate(Coordinate coordinate);
 }

@@ -1,4 +1,4 @@
-package com.mars_rover.Robot.Mobility;
+package com.marsrover.robot.Mobility;
 
 /**
  * Represents the possible rotation actions.

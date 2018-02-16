@@ -1,4 +1,4 @@
-package com.mars_rover;
+package com.marsrover;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,7 +36,7 @@ public class CliApplicationTest {
     @Test
     public void validateApplication() {
         assertEquals(
-            "Robot should finish in expected coordinate.",
+            "robot should finish in expected coordinate.",
             CliApplication.runApplication(input),
             expectedOutput
         );

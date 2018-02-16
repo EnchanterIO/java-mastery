@@ -1,9 +1,10 @@
-package com.mars_rover.RobotInstructionsController;
+package com.marsrover.controller;
 
-import com.mars_rover.Coordinates.Coordinate;
-import com.mars_rover.Robot.Mobility.Orientation;
+import com.marsrover.coordinates.Coordinate;
+import com.marsrover.robot.Mobility.Orientation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Lukas Lukac <services@trki.sk>
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 public class RobotState {
     private Coordinate coordinate;
     private Orientation orientation;
-    private ArrayList<String> errors;
+    private List<String> errors;
 
     RobotState(Coordinate coordinate, Orientation orientation) {
         this.coordinate = coordinate;

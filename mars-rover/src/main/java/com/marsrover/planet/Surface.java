@@ -1,10 +1,10 @@
-package com.mars_rover.Planet;
+package com.marsrover.planet;
 
-import com.mars_rover.Coordinates.Coordinate;
-import com.mars_rover.Robot.Mobility.Map;
+import com.marsrover.coordinates.Coordinate;
+import com.marsrover.robot.Mobility.SurfacePlan;
 
 /**
- * Every Planet has a flat rectangular surface.
+ * Every planet has a flat rectangular surface.
  *
  * The size of the planet is defined with Width and Height which is
  * behind the scenes translated into the Coordinate system of points.
@@ -14,7 +14,7 @@ import com.mars_rover.Robot.Mobility.Map;
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-13
  */
-class Surface implements Map {
+class Surface implements SurfacePlan {
     private final Coordinate highestCoordinate;
     private final Coordinate lowestCoordinate;
 
