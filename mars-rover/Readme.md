@@ -26,6 +26,10 @@ one has finished moving.
 
 ## Practical HTTPS remote control using CURL
 
+Copy:
+
+> curl -X PUT -d '5 5 1 2 N LMLMLMLMM 3 3 E MMRMMRMRRM' https://ll-mars-rover.herokuapp.com/robot/
+
 ![Curl control](documentation/curl_usage1.png)
 
 ## Validation 
