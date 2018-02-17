@@ -93,8 +93,8 @@ Deploys the JAR file to a Heroku app called: "ll-mars-rover".
 ## Extra commentary on design decisions
 
 - I was deciding a lot between HTTP POST/PUT method for the remote control as PUT, is idempotent and updates a specific resource, which seems to fit
-well the current scenario but also "[The PUT method requests that the enclosed entity be stored under the supplied Request-URI.](https://www.w3
-.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6)". At the end I went with POST and status code 200 instead of 201 as no new resource has been actually created.
+well the current scenario but also **The PUT method requests that the enclosed entity be stored under the supplied Request-URI.**
+(https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.6). At the end I went with POST and status code 200 instead of 201 as no new resource has been actually created.
 - Planet's surface (rectangle) is not represented using Array but using simple Coordinate.
 which holds 2 integers. This is done because it's more performance wise as only one Rover should
 exist in the same time. But how do you know if the Coordinate to step on exists without checking generated grid?
