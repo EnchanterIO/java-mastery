@@ -8,7 +8,7 @@ import com.marsrover.robot.Robot;
  * @since 2018-02-15
  */
 final public class RobotInstructionsController {
-    public static RobotState execute(RobotInstructions robotInstructions) {
+    public RobotState execute(RobotInstructions robotInstructions) {
         Robot robot = new Robot(
             robotInstructions.planet().map(),
             robotInstructions.coordinate(),

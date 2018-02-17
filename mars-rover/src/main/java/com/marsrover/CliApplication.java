@@ -9,7 +9,7 @@ import com.marsrover.controller.IllegalApplicationInstructionsException;
 final public class CliApplication {
     public static void main(String[] args) {
         try {
-            System.out.println(Application.run(args[0]));
+            System.out.println(new Application().run(args[0]));
         } catch (IllegalApplicationInstructionsException exception) {
             System.out.println(exception.getMessage());
             System.exit(1);

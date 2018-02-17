@@ -14,7 +14,7 @@ import java.net.InetSocketAddress;
 final public class HttpApplication {
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.err.println("Usage: java WebServer <port number>");
+            System.err.println("HttpApplication requires an argument: <port number>!");
             System.exit(1);
         }
 

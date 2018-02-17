@@ -10,13 +10,21 @@ import java.util.List;
  * @since  2018-02-16
  */
 public final class Application {
-    public static String run(String input) throws IllegalApplicationInstructionsException {
-        List<RobotInstructions>robotsInstructions = RobotInstructionsInputParser.parseInstructions(input);
+    private final RobotInstructionsController controller;
+    private final RobotInstructionsInputParser parser;
+
+    public Application() {
+        controller = new RobotInstructionsController();
+        parser = new RobotInstructionsInputParser();
+    }
+
+    public String run(String input) throws IllegalApplicationInstructionsException {
+        List<RobotInstructions>robotsInstructions = parser.parseInstructions(input);
 
         List<String> robotsOutputs = new ArrayList<>();
 
         for (RobotInstructions robotInstructions : robotsInstructions) {
-            RobotState robotState = RobotInstructionsController.execute(robotInstructions);
+            RobotState robotState = controller.execute(robotInstructions);
 
             robotsOutputs.add(String.format(
                 "%d %d %s",

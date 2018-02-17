@@ -19,10 +19,12 @@ import static org.junit.Assert.assertEquals;
 public class ApplicationTest {
     private String input;
     private String expectedOutput;
+    private Application application;
 
     public ApplicationTest(String input, String expectedOutput) {
         this.input = input;
         this.expectedOutput = expectedOutput;
+        this.application = new Application();
     }
 
     @Parameterized.Parameters
@@ -37,7 +39,7 @@ public class ApplicationTest {
     public void validateApplication() {
         assertEquals(
             "robot should finish in expected coordinate.",
-            Application.run(input),
+            application.run(input),
             expectedOutput
         );
     }

@@ -16,6 +16,12 @@ import java.nio.charset.StandardCharsets;
  * @since 2018-02-17
  */
 final public class RobotController implements HttpHandler {
+    private final Application application;
+
+    public RobotController() {
+        application = new Application();
+    }
+
     @Override
     public void handle(HttpExchange httpExchange) throws IOException {
         if (!isValidRequestMethod(httpExchange.getRequestMethod())) {
@@ -32,9 +38,7 @@ final public class RobotController implements HttpHandler {
         String response;
 
         try {
-            response = Application.run(
-                readApplicationInput(httpExchange.getRequestBody())
-            );
+            response = application.run(readApplicationInput(httpExchange.getRequestBody()));
         } catch (IllegalApplicationInstructionsException exception) {
             // In case the submitted instructions have wrong format
             response = exception.getMessage();

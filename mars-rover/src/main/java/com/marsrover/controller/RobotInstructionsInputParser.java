@@ -18,23 +18,7 @@ import java.util.regex.Pattern;
  * @see RobotInstructions
  */
 final public class RobotInstructionsInputParser {
-    private static Planet parsePlanet(String instructions) throws IllegalApplicationInstructionsException {
-        try {
-            int planetWidth = Character.getNumericValue(instructions.charAt(0));
-            int planetHeight = Character.getNumericValue(instructions.charAt(2));
-
-            return new Planet(planetWidth, planetHeight);
-        } catch (Exception exception) {
-            throw new IllegalApplicationInstructionsException(
-                String.format(
-                    "Unable to parse Planet size from input: '%s'!",
-                    instructions
-                )
-            );
-        }
-    }
-
-    public static List<RobotInstructions> parseInstructions(String instructions) throws IllegalApplicationInstructionsException {
+    public List<RobotInstructions> parseInstructions(String instructions) throws IllegalApplicationInstructionsException {
         Planet planet = parsePlanet(instructions);
         String instructionsWithoutPlanet = removePlanet(instructions);
         Matcher matcher = createParser(instructionsWithoutPlanet);
@@ -55,6 +39,22 @@ final public class RobotInstructionsInputParser {
         validateParsedRobotsInstructions(robotInstructions, instructions);
 
         return robotInstructions;
+    }
+
+    private Planet parsePlanet(String instructions) throws IllegalApplicationInstructionsException {
+        try {
+            int planetWidth = Character.getNumericValue(instructions.charAt(0));
+            int planetHeight = Character.getNumericValue(instructions.charAt(2));
+
+            return new Planet(planetWidth, planetHeight);
+        } catch (Exception exception) {
+            throw new IllegalApplicationInstructionsException(
+                    String.format(
+                            "Unable to parse Planet size from input: '%s'!",
+                            instructions
+                    )
+            );
+        }
     }
 
     private static void validateParsedRobotsInstructions(List<RobotInstructions> robotsInstructions, String input) throws IllegalApplicationInstructionsException {
