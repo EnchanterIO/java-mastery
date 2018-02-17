@@ -32,6 +32,7 @@ public class ApplicationTest {
         return Arrays.asList(new Object[][] {
             { "5 5 1 2 N LMLMLMLMM", "1 3 N" },
             { "5 5 1 2 N LMLMLMLMM 3 3 E MMRMMRMRRM", "1 3 N 5 1 E" },
+            { "5 5 1 2 N LMMMMMMMM", "0 2 W" },
         });
     }
 

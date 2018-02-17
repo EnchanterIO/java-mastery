@@ -49,10 +49,10 @@ final public class RobotInstructionsInputParser {
             return new Planet(planetWidth, planetHeight);
         } catch (Exception exception) {
             throw new IllegalApplicationInstructionsException(
-                    String.format(
-                            "Unable to parse Planet size from input: '%s'!",
-                            instructions
-                    )
+                String.format(
+                    "Unable to parse Planet size from input: '%s'!",
+                    instructions
+                )
             );
         }
     }
@@ -83,26 +83,53 @@ final public class RobotInstructionsInputParser {
         return instructions.substring(4);
     }
 
-    private static Coordinate parseCoordinate(String rawCoordinate) {
-        return new Coordinate(
-            Character.getNumericValue(rawCoordinate.charAt(0)),
-            Character.getNumericValue(rawCoordinate.charAt(2))
-        );
-    }
-
-    private static Orientation parseOrientation(String rawOrientation) {
-        return OrientationInstruction.valueOf(rawOrientation).orientation();
-    }
-
-    private static MovementInstruction[] parseMovements(String rawConcatenatedMovements) {
-        char[] rawMovements = rawConcatenatedMovements.toCharArray();
-
-        MovementInstruction[] movements = new MovementInstruction[rawMovements.length];
-
-        for (int i = 0; i < rawMovements.length; i++) {
-            movements[i] = MovementInstruction.valueOf(Character.toString(rawMovements[i]));
+    private static Coordinate parseCoordinate(String rawCoordinate) throws IllegalApplicationInstructionsException {
+        try {
+            return new Coordinate(
+                Character.getNumericValue(rawCoordinate.charAt(0)),
+                Character.getNumericValue(rawCoordinate.charAt(2))
+            );
+        } catch (Throwable exception) {
+            throw new IllegalApplicationInstructionsException(
+                String.format(
+                    "Unable to parse Robot coordinate from instructions: '%s'!",
+                    rawCoordinate
+                )
+            );
         }
+    }
 
-        return movements;
+    private static Orientation parseOrientation(String rawOrientation) throws IllegalApplicationInstructionsException {
+        try {
+            return OrientationInstruction.valueOf(rawOrientation).orientation();
+        } catch (Throwable exception) {
+            throw new IllegalApplicationInstructionsException(
+                String.format(
+                    "Unable to parse Robot orientation from instructions: '%s'!",
+                    rawOrientation
+                )
+            );
+        }
+    }
+
+    private static MovementInstruction[] parseMovements(String rawConcatenatedMovements) throws IllegalApplicationInstructionsException {
+        try {
+            char[] rawMovements = rawConcatenatedMovements.toCharArray();
+
+            MovementInstruction[] movements = new MovementInstruction[rawMovements.length];
+
+            for (int i = 0; i < rawMovements.length; i++) {
+                movements[i] = MovementInstruction.valueOf(Character.toString(rawMovements[i]));
+            }
+
+            return movements;
+        } catch (Throwable exception) {
+            throw new IllegalApplicationInstructionsException(
+                String.format(
+                    "Unable to parse Robot movements from instructions: '%s'!",
+                    rawConcatenatedMovements
+                )
+            );
+        }
     }
 }
