@@ -8,7 +8,7 @@ import com.marsrover.robot.Mobility.Orientation;
  * @author Lukas Lukac <services@trki.sk>
  * @since 2018-02-15
  */
-public class RobotInstructions {
+final public class RobotInstructions {
     private Planet planet;
     private Coordinate coordinate;
     private Orientation orientation;

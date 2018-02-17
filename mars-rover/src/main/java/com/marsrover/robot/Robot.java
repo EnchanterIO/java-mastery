@@ -10,7 +10,7 @@ import com.marsrover.robot.Mobility.MoveOutOfSurfacePlanRefusedException;
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-13
  */
-public class Robot {
+final public class Robot {
     private MobilityEngine mobilityEngine;
 
     public Robot(SurfacePlan surfacePlan, Coordinate coordinate, Orientation orientation) {

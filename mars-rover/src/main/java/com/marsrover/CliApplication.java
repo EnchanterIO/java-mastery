@@ -1,11 +1,18 @@
 package com.marsrover;
 
+import com.marsrover.controller.IllegalApplicationInstructionsException;
+
 /**
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-13
  */
-public class CliApplication extends Application {
+final public class CliApplication {
     public static void main(String[] args) {
-        System.out.println(runApplication(args[0]));
+        try {
+            System.out.println(Application.run(args[0]));
+        } catch (IllegalApplicationInstructionsException exception) {
+            System.out.println(exception.getMessage());
+            System.exit(1);
+        }
     }
 }

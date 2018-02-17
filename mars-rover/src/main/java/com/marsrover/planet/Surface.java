@@ -14,11 +14,11 @@ import com.marsrover.robot.Mobility.SurfacePlan;
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-13
  */
-class Surface implements SurfacePlan {
+final class Surface implements SurfacePlan {
     private final Coordinate highestCoordinate;
     private final Coordinate lowestCoordinate;
 
-    public Surface(int width, int height) {
+    Surface(int width, int height) {
         this.highestCoordinate = new Coordinate(width, height);
         this.lowestCoordinate = new Coordinate(0, 0);
     }

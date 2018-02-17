@@ -10,29 +10,36 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Parses the raw Client input into standardized RobotInstructions required to control the Robot.
+ *
  * @author Lukas Lukac <services@trki.sk>
  * @since 2018-02-15
+ *
+ * @see RobotInstructions
  */
-public class RobotInstructionsInputParser {
-    private static Planet parsePlanet(String instructions) throws IllegalArgumentException {
+final public class RobotInstructionsInputParser {
+    private static Planet parsePlanet(String instructions) throws IllegalApplicationInstructionsException {
         try {
             int planetWidth = Character.getNumericValue(instructions.charAt(0));
             int planetHeight = Character.getNumericValue(instructions.charAt(2));
 
             return new Planet(planetWidth, planetHeight);
         } catch (Exception exception) {
-            throw new IllegalArgumentException(exception.getMessage(), exception);
+            throw new IllegalApplicationInstructionsException(
+                String.format(
+                    "Unable to parse Planet size from input: '%s'!",
+                    instructions
+                )
+            );
         }
     }
 
-    public static List<RobotInstructions> parseInstructions(String instructions) throws IllegalArgumentException {
+    public static List<RobotInstructions> parseInstructions(String instructions) throws IllegalApplicationInstructionsException {
         Planet planet = parsePlanet(instructions);
         String instructionsWithoutPlanet = removePlanet(instructions);
         Matcher matcher = createParser(instructionsWithoutPlanet);
 
-        validateInput(matcher, instructionsWithoutPlanet);
-
-        ArrayList<RobotInstructions> robotInstructions = new ArrayList<>();
+        List<RobotInstructions> robotInstructions = new ArrayList<>();
 
         while (matcher.find()) {
             robotInstructions.add(
@@ -45,12 +52,14 @@ public class RobotInstructionsInputParser {
             );
         }
 
+        validateParsedRobotsInstructions(robotInstructions, instructions);
+
         return robotInstructions;
     }
 
-    private static void validateInput(Matcher matcher, String input) throws IllegalArgumentException {
-        if (matcher.groupCount() != 3) {
-            throw new IllegalArgumentException(
+    private static void validateParsedRobotsInstructions(List<RobotInstructions> robotsInstructions, String input) throws IllegalApplicationInstructionsException {
+        if (robotsInstructions.size() == 0) {
+            throw new IllegalApplicationInstructionsException(
                 String.format(
                     "Unable to parse RobotInstructions from input: '%s'!",
                     input
@@ -67,6 +76,10 @@ public class RobotInstructionsInputParser {
     }
 
     private static String removePlanet(String instructions) {
+        if (instructions.length() < 4) {
+            return instructions;
+        }
+
         return instructions.substring(4);
     }
 

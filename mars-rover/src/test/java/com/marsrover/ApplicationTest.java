@@ -16,11 +16,11 @@ import static org.junit.Assert.assertEquals;
  * @since  2018-02-13
  */
 @RunWith(Parameterized.class)
-public class CliApplicationTest {
+public class ApplicationTest {
     private String input;
     private String expectedOutput;
 
-    public CliApplicationTest(String input, String expectedOutput) {
+    public ApplicationTest(String input, String expectedOutput) {
         this.input = input;
         this.expectedOutput = expectedOutput;
     }
@@ -37,7 +37,7 @@ public class CliApplicationTest {
     public void validateApplication() {
         assertEquals(
             "robot should finish in expected coordinate.",
-            CliApplication.runApplication(input),
+            Application.run(input),
             expectedOutput
         );
     }

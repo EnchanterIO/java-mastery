@@ -12,7 +12,7 @@ import com.marsrover.coordinates.Coordinate;
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-14
  */
-public class MobilityEngine {
+final public class MobilityEngine {
     private final SurfacePlan surfacePlan;
     private Coordinate currentCoordinate;
     private Orientation orientation;

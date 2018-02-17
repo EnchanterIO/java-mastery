@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar build/libs/mars-rover-0.1.0-SNAPSHOT.jar
+web: java $JAVA_OPTS -jar build/libs/mars-rover-http.application.0.1.0.jar $PORT

@@ -7,7 +7,7 @@ package com.marsrover.coordinates;
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-13
  */
-public class Coordinate {
+final public class Coordinate {
     private int horizontalPoint;
     private int verticalPoint;
 

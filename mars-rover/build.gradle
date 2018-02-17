@@ -8,13 +8,13 @@ buildscript {
     }
 }
 
-version = '0.1.0-SNAPSHOT'
+version = 'http.application.0.1.0'
 
 apply plugin: 'java'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.marsrover.Application'
+        attributes 'Main-Class': 'com.marsrover.HttpApplication'
     }
 }
 

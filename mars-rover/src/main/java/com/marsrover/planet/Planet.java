@@ -6,7 +6,7 @@ import com.marsrover.robot.Mobility.SurfacePlan;
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-13
  */
-public class Planet {
+final public class Planet {
     private final Surface surface;
 
     public Planet(int width, int height) {

@@ -6,7 +6,7 @@ import com.marsrover.coordinates.Coordinate;
  * @author Lukas Lukac <services@trki.sk>
  * @since  2018-02-15
  */
-public class MoveOutOfSurfacePlanRefusedException extends RuntimeException {
+final public class MoveOutOfSurfacePlanRefusedException extends RuntimeException {
     MoveOutOfSurfacePlanRefusedException(Coordinate coordinate) {
         super(
             String.format(
