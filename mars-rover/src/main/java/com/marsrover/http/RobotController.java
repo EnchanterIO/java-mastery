@@ -53,7 +53,7 @@ final public class RobotController implements HttpHandler {
     }
 
     private boolean isValidRequestMethod(String method) {
-        return method.toLowerCase().equals("put");
+        return method.toLowerCase().equals("post");
     }
 
     private void renderResponse(HttpExchange exchange, int responseCode, String response) throws IOException {
